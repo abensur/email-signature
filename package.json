@@ -6,17 +6,20 @@
     "build": "nuxi build",
     "dev:pwa": "VITE_PLUGIN_PWA=true nuxi dev",
     "dev": "nuxi dev",
+    "serve": "npx nuxt dev --remote",
     "generate": "nuxi generate",
     "postinstall": "nuxi prepare",
     "start": "node .output/server/index.mjs",
     "start:generate": "npx serve .output/public",
     "lint": "eslint .",
-    "typecheck": "vue-tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit",
+    "db:generate": "drizzle-kit generate:sqlite"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "@nuxthub/core": "^0.2.1",
-    "clipboard": "^2.0.11"
+    "clipboard": "^2.0.11",
+    "drizzle-orm": "^0.29.4"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.6.3",
@@ -29,6 +32,7 @@
     "@vite-pwa/nuxt": "^0.4.0",
     "@vueuse/nuxt": "^10.7.2",
     "consola": "^3.2.3",
+    "drizzle-kit": "^0.20.14",
     "eslint": "npm:eslint-ts-patch@^8.56.0-0",
     "eslint-plugin-format": "^0.1.0",
     "eslint-ts-patch": "^8.56.0-0",

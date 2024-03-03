@@ -26,6 +26,18 @@ function handleUpdate(data: SignatureFields) {
   // eslint-disable-next-line no-console
   console.log('handleUpdate', data)
 }
+
+function handleSave() {
+  // console.log('handleSave', signatureData.value)
+
+  useFetch('/api/signatures', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: toRaw(signatureData.value),
+  })
+}
 </script>
 
 <template>
@@ -34,7 +46,7 @@ function handleUpdate(data: SignatureFields) {
       <SignatureForm v-model="signatureData" @update:model-value="handleUpdate" />
     </div>
     <div position-sticky top-6 w-full bg-white px-4 shadow-lg>
-      <Renderer :data="signatureData" />
+      <Renderer :data="signatureData" @save="handleSave" />
     </div>
   </div>
 </template>

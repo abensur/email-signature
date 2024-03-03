@@ -3,6 +3,8 @@ const props = defineProps<{
   data: SignatureFields
 }>()
 
+const emit = defineEmits(['save'])
+
 const source = ref()
 
 const tel1 = computed(() => `tel:${props.data.phone?.replace(/ /g, '').replace(/\D/g, '')}`)
@@ -205,7 +207,10 @@ const site = computed(() => props.data.website?.replace(/https?:\/\//, ''))
 
     <Suspense>
       <ClientOnly>
-        <RendererActions :source="source" />
+        <RendererActions
+          :source="source"
+          @save="() => emit('save')"
+        />
 
         <template #fallback>
           <div italic op50>

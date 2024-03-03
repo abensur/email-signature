@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import Clipboard from 'clipboard'
 
+const emit = defineEmits(['save'])
+
 const feedback = ref(false)
 
 function success() {
@@ -8,8 +10,7 @@ function success() {
 }
 
 function handleSave() {
-  // eslint-disable-next-line no-console
-  console.log('Save')
+  emit('save')
 }
 
 onMounted(() => {
